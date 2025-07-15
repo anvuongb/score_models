@@ -159,7 +159,7 @@ class NCSNppScale(nn.Module):
         # An: this is for time embedding
         modules = [GaussianFourierProjection(embed_dim=nf, scale=fourier_scale), nn.Linear(time_input_nf, nf * 4), nn.Linear(nf * 4, nf * 4)]
         # An: this is for scale embedding
-        modules = [GaussianFourierProjection(embed_dim=nf, scale=fourier_scale), nn.Linear(time_input_nf, nf * 4), nn.Linear(nf * 4, nf * 4)]
+        modules += [GaussianFourierProjection(embed_dim=nf, scale=fourier_scale), nn.Linear(time_input_nf, nf * 4), nn.Linear(nf * 4, nf * 4)]
         with torch.no_grad():
             modules[1].weight.data = default_init()(modules[1].weight.shape)
             modules[1].bias.zero_()
