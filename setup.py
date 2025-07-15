@@ -5,13 +5,13 @@ with open("long_description.rst", "r") as fh:
     long_description = fh.read()
 
 setup(
-	name="score_models_av_av",
+	name="score_models_av",
 	version="0.5.11",
     description="A simple pytorch interface for score model and basic diffusion.",
     long_description=long_description,
     author="Alexandre Adam - forked by av",
     author_email="alexandre.adam@umontreal.ca",
-    url="https://github.com/anvuongb/score_models_av",
+    url="https://github.com/anvuongb/score_models",
     packages=find_packages(),
     install_requires=[
         "torch>=2.0",
