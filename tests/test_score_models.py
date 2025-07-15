@@ -1,14 +1,14 @@
 import torch
-from score_models.utils import load_architecture
-from score_models import ScoreModel, EnergyModel, SLIC
-from score_models.architectures import MLP, NCSNpp, DDPM
-from score_models.sde import VESDE, VPSDE, TSVESDE
+from score_models_av.utils import load_architecture
+from score_models_av import ScoreModel, EnergyModel, SLIC
+from score_models_av.architectures import MLP, NCSNpp, DDPM
+from score_models_av.sde import VESDE, VPSDE, TSVESDE
 import pytest
 
 
 def local_test_loading_model_and_score_fn():
     # local test only
-    path = "/home/alexandre/Desktop/Projects/data/score_models/ncsnpp_ct_g_220912024942"
+    path = "/home/alexandre/Desktop/Projects/data/score_models_av/ncsnpp_ct_g_220912024942"
     model, hparams = load_architecture(path)
     
     score = ScoreModel(checkpoints_directory=path)

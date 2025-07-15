@@ -1,4 +1,4 @@
-from score_models import NCSNpp, DDPM, MLP
+from score_models_av import NCSNpp, DDPM, MLP
 import torch
 import pytest
 

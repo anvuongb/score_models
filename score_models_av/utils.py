@@ -76,13 +76,13 @@ def load_architecture(
             hyperparameters["dimensions"] = dimensions
     if isinstance(model, str):
         if model.lower() == "ncsnpp":
-            from score_models.architectures import NCSNpp
+            from score_models_av.architectures import NCSNpp
             model = NCSNpp(**hyperparameters).to(device)
         elif model.lower() == "ddpm":
-            from score_models.architectures import DDPM
+            from score_models_av.architectures import DDPM
             model = DDPM(**hyperparameters).to(device)
         elif model.lower() == "mlp":
-            from score_models import MLP
+            from score_models_av import MLP
             model = MLP(**hyperparameters).to(device)
         else:
             raise ValueError(f"{model} not supported")
@@ -114,7 +114,7 @@ def load_architecture(
             print(f"Loaded checkpoint {checkpoints[checkpoint]} of {model_dir}")
         except (KeyError, RuntimeError):
             # Maybe the ScoreModel instance was used when saving the weights, in which case we hack the loading process
-            from score_models import ScoreModel
+            from score_models_av import ScoreModel
             model = ScoreModel(model, **hyperparameters)
             model.load_state_dict(torch.load(path, map_location=device))
             model = model.model # Remove the ScoreModel wrapping to extract the nn

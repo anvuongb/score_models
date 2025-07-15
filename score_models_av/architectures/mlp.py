@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from score_models.layers import GaussianFourierProjection, ScaledAttentionLayer
-from score_models.utils import get_activation
+from score_models_av.layers import GaussianFourierProjection, ScaledAttentionLayer
+from score_models_av.utils import get_activation
 
 
 class MLP(nn.Module):

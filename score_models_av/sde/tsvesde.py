@@ -6,7 +6,7 @@ import numpy as np
 from torch.distributions import Normal, Independent
 import torch.nn.functional as F
 from torch.func import grad, vmap
-from score_models.utils import DEVICE
+from score_models_av.utils import DEVICE
 
 
 class TSVESDE(SDE):

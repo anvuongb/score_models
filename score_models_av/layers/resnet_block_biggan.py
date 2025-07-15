@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from score_models.definitions import default_init
+from score_models_av.definitions import default_init
 from .conv_layers import conv1x1, conv3x3
 from .up_or_downsampling import *
 

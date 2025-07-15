@@ -3,7 +3,7 @@ from .sde import SDE
 from torch import Tensor
 import numpy as np
 from torch.distributions import Normal, Independent
-from score_models.utils import DEVICE
+from score_models_av.utils import DEVICE
 
 
 class VESDE(SDE):

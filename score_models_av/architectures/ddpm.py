@@ -4,9 +4,9 @@ with slight modifications to make it work on continuous time.
 """
 import torch
 from torch import nn
-from score_models.utils import get_activation
-from score_models.layers import DDPMResnetBlock, SelfAttentionBlock, GaussianFourierProjection, UpsampleLayer, DownsampleLayer
-from score_models.layers.ddpm_resnet_block import conv3x3
+from score_models_av.utils import get_activation
+from score_models_av.layers import DDPMResnetBlock, SelfAttentionBlock, GaussianFourierProjection, UpsampleLayer, DownsampleLayer
+from score_models_av.layers.ddpm_resnet_block import conv3x3
 import functools
 
 

@@ -2,10 +2,10 @@
 Score Models for Pytorch
 =========================
 
-.. image:: https://badge.fury.io/py/score_models.svg
-   :target: https://badge.fury.io/py/score_models
-.. image:: https://codecov.io/gh/AlexandreAdam/torch_score_models/branch/dev/graph/badge.svg
-   :target: https://codecov.io/gh/AlexandreAdam/torch_score_models
+.. image:: https://badge.fury.io/py/score_models_av.svg
+   :target: https://badge.fury.io/py/score_models_av
+.. image:: https://codecov.io/gh/AlexandreAdam/torch_score_models_av/branch/dev/graph/badge.svg
+   :target: https://codecov.io/gh/AlexandreAdam/torch_score_models_av
 
 A storage for score-based models. The `ScoreModel` interface gives access to the following utilities:
 
@@ -45,7 +45,7 @@ The `ScoreModel` class extends the `torch.nn.Module` class. Example usage:
 
 .. code-block:: python
 
-    from score_models import ScoreModel, EnergyModel, NCSNpp, MLP, DDPM
+    from score_models_av import ScoreModel, EnergyModel, NCSNpp, MLP, DDPM
 
     # B is the batch size
     # C is the input channels

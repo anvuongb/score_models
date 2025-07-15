@@ -1,7 +1,7 @@
 # Score Models for Pytorch
 
-[![PyPI version](https://badge.fury.io/py/score_models.svg)](https://badge.fury.io/py/score_models)
-[![codecov](https://codecov.io/gh/AlexandreAdam/torch_score_models/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandreAdam/torch_score_models)
+[![PyPI version](https://badge.fury.io/py/score_models_av.svg)](https://badge.fury.io/py/score_models_av)
+[![codecov](https://codecov.io/gh/AlexandreAdam/torch_score_models_av/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandreAdam/torch_score_models_av)
 
 A storage for score-based models. The `ScoreModel` interface gives access to the following utilities
 - Simple initialisation of MLP, NCSN++ and DDPM neural network architectures
@@ -17,7 +17,7 @@ You might also want to refer to the original implementation at [https://github.c
 To install the package, you can use pip:
 
 ```bash
-pip install score_models
+pip install score_models_av
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ of an SDE and $f_\theta : [0, 1] \times\mathbb{R}^d \to \mathbb{R}^d$ is a neura
 The `ScoreModel` class extends the `torch.nn.Module` class. Example usage:
 
 ```python
-from score_models import ScoreModel, EnergyModel, NCSNpp, MLP, DDPM
+from score_models_av import ScoreModel, EnergyModel, NCSNpp, MLP, DDPM
 
 # B is the batch size
 # C is the input channels

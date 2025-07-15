@@ -1,14 +1,14 @@
-from score_models.layers import DDPMResnetBlock, GaussianFourierProjection, SelfAttentionBlock, \
+from score_models_av.layers import DDPMResnetBlock, GaussianFourierProjection, SelfAttentionBlock, \
         UpsampleLayer, DownsampleLayer, Combine, ResnetBlockBigGANpp, conv3x3, PositionalEncoding
-from score_models.utils import get_activation
-from score_models.definitions import default_init
+from score_models_av.utils import get_activation
+from score_models_av.definitions import default_init
 import torch.nn as nn
 import functools
 import torch
 import numpy as np
 
 
-class NCSNppScale(nn.Module):
+class NCSNpp(nn.Module):
     """
     NCSN++ model
 
@@ -156,9 +156,6 @@ class NCSNppScale(nn.Module):
             self.condition_embedding_layers = nn.ModuleList(condition_embedding_layers)
                 
         # Condition on continuous time (second layer receives a concatenation of all the embeddings)
-        # An: this is for time embedding
-        modules = [GaussianFourierProjection(embed_dim=nf, scale=fourier_scale), nn.Linear(time_input_nf, nf * 4), nn.Linear(nf * 4, nf * 4)]
-        # An: this is for scale embedding
         modules = [GaussianFourierProjection(embed_dim=nf, scale=fourier_scale), nn.Linear(time_input_nf, nf * 4), nn.Linear(nf * 4, nf * 4)]
         with torch.no_grad():
             modules[1].weight.data = default_init()(modules[1].weight.shape)
@@ -292,7 +289,6 @@ class NCSNppScale(nn.Module):
         self.all_modules = nn.ModuleList(modules)
 
     def forward(self, t, x, *args):
-        s = args[0]
         B, *D = x.shape
         # timestep/noise_level embedding; only for continuous training
         modules = self.all_modules
@@ -316,17 +312,6 @@ class NCSNppScale(nn.Module):
         m_idx += 1
         temb = modules[m_idx](self.act(temb))
         m_idx += 1
-
-        # scale embedding
-        semb = modules[m_idx](s).view(B, -1)
-        m_idx += 1
-        semb = modules[m_idx](semb)
-        m_idx += 1
-        semb = modules[m_idx](self.act(semb))
-        m_idx += 1
-
-        # add them together???
-        temb = temb + semb
         
         
         if self.conditioned:

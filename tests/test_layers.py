@@ -1,8 +1,8 @@
 import torch
-from score_models.layers import StyleGANConv, UpsampleLayer, DownsampleLayer, Combine, ResnetBlockBigGANpp
-from score_models.layers.attention_block import SelfAttentionBlock, ScaledAttentionLayer
-from score_models.definitions import default_init
-from score_models.utils import get_activation
+from score_models_av.layers import StyleGANConv, UpsampleLayer, DownsampleLayer, Combine, ResnetBlockBigGANpp
+from score_models_av.layers.attention_block import SelfAttentionBlock, ScaledAttentionLayer
+from score_models_av.definitions import default_init
+from score_models_av.utils import get_activation
 import numpy as np
 
 def init_test_fn(shape, dtype=torch.float32, device="cpu"):
@@ -177,8 +177,8 @@ def test_stylegan_conv_resample_kernel():
 
 def test_transposed_conv():
     # Test that we can downsample and upsample odd numbered images with correct padding
-    from score_models.layers import ConvTransposed1dSame, ConvTransposed2dSame, ConvTransposed3dSame
-    from score_models.layers import Conv1dSame, Conv2dSame, Conv3dSame
+    from score_models_av.layers import ConvTransposed1dSame, ConvTransposed2dSame, ConvTransposed3dSame
+    from score_models_av.layers import Conv1dSame, Conv2dSame, Conv3dSame
     
     B = 10
     D = 15

@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout score_models
+      - name: Checkout score_models_av
         uses: actions/checkout@v3
           
       - name: Set up Python
@@ -40,18 +40,18 @@ jobs:
           pip install -r requirements.txt
         shell: bash
           
-      - name: Install score_models
+      - name: Install score_models_av
         run: |
           cd $GITHUB_WORKSPACE
           pip install -e .
-          pip show score_models
+          pip show score_models_av
         shell: bash
 
       - name: Run tests with coverage
         run: |
           cd $GITHUB_WORKSPACE
           pwd
-          pytest --cov-report=xml --cov=score_models tests/
+          pytest --cov-report=xml --cov=score_models_av tests/
         shell: bash
 
       - name: Upload coverage report to Codecov
